@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models import Question, Choice
 
-admin.site.site_header = "Polling App Admin"
-admin.site.site_title = "Polling App Admin Area"
-admin.site.index_title = "Hello, {admin.username}. Welcome to the Polling App Admin Area"
+admin.site.site_header = "Polling App Admin" #
+admin.site.site_title = "Welcome to Polling App's Admin Area" # In Laravel, it is the header
+admin.site.index_title = "Admin page"  # In Laravel, it is called @section('content') in the layout file
 # Register your models here.
 
 # TabularInline is a class that allows you to edit the choices on the same page as the question

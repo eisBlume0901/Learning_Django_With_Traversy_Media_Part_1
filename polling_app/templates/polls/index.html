@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Polls{% endblock %}
+
+{% block content %}
+    <h1 class="text-center text-2xl text-violet-700 py-2 font-bold">
+       Polls Question
+    </h1>
+    <!-- In laravel it is @if($latest_question_list) @else @endif -->
+    {% if latest_question_list %}
+        {% for question in latest_question_list %}
+            <div class="card my-2 bg-lime-200 border-2 border-violet-700 rounded-lg">
+                <div class="card-body text-violet-700 p-4">
+                    <p>{{ question.question_text }}</p>
+                    <button class="font-bold hover:text-lime-700">View Details</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No polls available</p>
+    {% endif %}
+{% endblock %}

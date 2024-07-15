@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,7 +57,9 @@ ROOT_URLCONF = 'polling_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # the DIRS is a list of directories where Django will look for templates
+        # If there is a newly created folder, you need to add here so that Django can find it
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # This is where the templates are stored
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
