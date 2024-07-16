@@ -4,16 +4,17 @@
 {% block title %}Polls{% endblock %}
 
 {% block content %}
-    <h1 class="text-center text-2xl text-violet-700 py-2 font-bold">
+    <h1 class="text-center text-3xl text-violet-700 py-2 my-3 font-bold">
        Polls Question
     </h1>
     <!-- In laravel it is @if($latest_question_list) @else @endif -->
     {% if latest_question_list %}
         {% for question in latest_question_list %}
-            <div class="card my-2 bg-lime-200 border-2 border-violet-700 rounded-lg">
-                <div class="card-body text-violet-700 p-4">
-                    <p>{{ question.question_text }}</p>
-                    <button class="font-bold hover:text-lime-700">View Details</button>
+            <div class="card max-w-md mx-auto my-2 bg-white-200 border-2 border-violet-700 rounded-xl p-4">
+                <p class="mb-3 ml-1 font-normal text-md text-violet-700">{{ question.question_text }}</p>
+                <div class="flex flex-row gap-x-2">
+                    <a href="{% url 'polls:detail' question.id %}" class="text-violet-700 text-md inline-flex w-50 bg-lime-200 rounded-lg py-1 px-2 hover:text-lime-200 hover:bg-violet-700">Vote Now</a>
+                    <a href="{% url 'polls:results' question.id %}" class="text-lime-200 text-md inline-flex w-50 bg-violet-700 rounded-lg py-1 px-2 hover:text-violet-700 hover:bg-lime-200">Results</a>
                 </div>
             </div>
         {% endfor %}

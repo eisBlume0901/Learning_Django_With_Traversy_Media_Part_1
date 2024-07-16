@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'polls:index' %}" class="text-violet-700 text-md inline-flex w-50 bg-lime-200 rounded-lg py-1 px-2 hover:text-lime-200 hover:bg-violet-700">Back to Polls</a>
+
+<h1>{{ question.question_text }}</h1>
+{% endblock %}
