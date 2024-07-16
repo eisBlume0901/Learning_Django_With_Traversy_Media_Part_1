@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card max-w-md mx-auto my-2 bg-white-200 border-2 border-violet-700 rounded-xl p-4">
+    <p class="mb-3 ml-1 font-normal text-md text-violet-700">{{ question.question_text }}</p>
+
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <!-- pluralize means that if the number of votes is 1, it will display "1 vote" and if the number of votes is more than 1, it will display "2 votes" or "3 votes" etc. -->
+        <li class="flex justify-between w-80 mx-auto">
+            <div class="text-violet-700">
+                {{ choice.choice_text }}
+            </div>
+            <div class="text-lime-700 font-bold">
+                {{ choice.votes }} vote{{ choice.votes|pluralize }}
+            </div>
+        </li>    
+        {% endfor %}
+    </ul>
+</div>
+<div class="flex flex-row gap-x-2">
+    <a href="{% url 'polls:index' %}" class="text-violet-700 text-md inline-flex w-50 bg-lime-200 rounded-lg py-1 px-2 hover:text-lime-200 hover:bg-violet-700">Back to Polls</a>
+    <a href="{% url 'polls:detail' question.id %}" class="text-lime-200 text-md inline-flex w-50 bg-violet-700 rounded-lg py-1 px-2 hover:text-violet-700 hover:bg-lime-200">Vote Again?</a>
+</div>
+{% endblock %}
