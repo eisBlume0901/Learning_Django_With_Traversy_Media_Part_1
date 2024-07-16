@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 <a href="{% url 'polls:index' %}" class="text-violet-700 text-md inline-flex w-50 bg-lime-200 rounded-lg py-1 px-2 hover:text-lime-200 hover:bg-violet-700">Back to Polls</a>
+<div class="card max-w-md mx-auto my-2 bg-white-200 border-2 border-violet-700 rounded-xl p-4">
+    <p class="mb-3 ml-1 font-normal text-md text-violet-700">{{ question.question_text }}</p>
+    
+    {% if error_message %}
+        <p class="text-red-500">{{ error_message }}</p>
+    {% endif %}
 
-<h1>{{ question.question_text }}</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="flex flex-col gap-y-2 mb-2.5">
+            {% for choice in question.choice_set.all %}
+            <div class="choice_options"> 
+                <input 
+                type="radio" 
+                name="choice"
+                id="choice{{ forloop.counter }}"
+                value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="submit" value="Vote" class="text-violet-700 text-md inline-flex w-50 bg-lime-200 rounded-lg py-1 px-2 hover:text-lime-200 hover:bg-violet-700">Submit Vote</button>
+    </form>
+</div>
+ 
 {% endblock %}
