@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mx-auto max-w-md">
+    <h1 class="mb-2 text-violet-700">Welcome to Polling App</h1>
+    <p class="mb-2 text-violet-700">This is an example of a simple Django project</p>
+    <a href="{% url 'polls:index' %}" class="text-violet-700 text-md inline-flex w-50 bg-lime-200 rounded-lg py-1 px-2 hover:text-lime-200 hover:bg-violet-700">View Available Polls</a>
+</div>
+{% endblock %}

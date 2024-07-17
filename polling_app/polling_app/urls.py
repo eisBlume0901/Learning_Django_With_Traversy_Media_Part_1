@@ -19,6 +19,7 @@ from django.urls import include, path #include is used to include other URLconfs
 
 urlpatterns = [
 
+    path('', include('pages.urls')), # This is the URL configuration for the pages app
     # Initial URL address is polls/ then under the polls folder, we will include the urls.py file
     path('polls/', include('polls.urls')), # This is the URL configuration for the polls app    
 
